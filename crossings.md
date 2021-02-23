@@ -31,13 +31,13 @@ This section will lay the foundational terminology for this and subsequent secti
 Points are represented by a numpy Nx2 ndarray.  For example, this is a square.  The first column is the X-coordinates and the second column is the Y-coordinates.
 
 ```
-A # -- An array of points
+pnts # -- An array of points
 array([[  0.00,   0.00],
        [  0.00,  10.00],
        [ 10.00,  10.00],
        [ 10.00,   0.00],
        [  0.00,   0.00]])
-seg # -- the first segment of A showing from-to points
+seg # -- the first segment of pnts showing from-to points
 array([[  0.00,   0.00],
        [  0.00,  10.00]])
 
@@ -45,15 +45,18 @@ seg_ravel
 array([  0.00,   0.00,   0.00,  10.00])  # -- same as seg, but with the pairs raveled/flattened
 
 ```
-The array need not represent anything other a series of points.  In this particular case, it can be used to represent a polyline and/or a polygon.
+The array need not represent anything other a series of points.  In this particular case, it was used to represent a polyline and/or a polygon.
 Why?  The points are ordered in clockwise order and the first and last points are the same.  Others use counter-clockwise order to represent poly/* geometries, but personally... I found it counter-productive ;).
 
 
 ```
-pnts    - The points used to represent the geometry
+pnts    - The points used to represent geometry.
+x, y    - A generic point or series of points.  
+          If `pnts` above, represented any set of points, then `x,y` would be used to represent their coordinates.
+          If the points belonged to a segment, polyline or polygon, then one of the notations that follow would be
+          used to indicate their special condition.
 x0, y0  - The first two coordinates in `seg` or `seg_ravel`.  These represent the first point in a segment.
 x1, y1  - The second two coordinates, representing the last point in the segment.
-
 x2, y2  - As above, but for another segment
 x3, y3
 ```
@@ -69,21 +72,34 @@ If you are with me, then press on.
 
 **Two equations with two unknowns**
 
-```python                                                                                                 numerators
-     # the t_numer ==> ua                       Just arranged like line_crossings  a =         a_0    <=  a_1
-     (x3 - x2)(y0 - y2) - (y3 - y2)(x0 - x2)   (y0 - y2)*dc_x - (x0 - x2)*dc_y     a = (y0 - y2)*dc_x <= (x0 - x2)*dc_y
-ua = --------------------------------------  = --------------------------------- =      
-     (y3 - y2)(x1 - x0) - (x3 - x2)(y1 - y0)   (x1 - x0)*dc_y - (y1 - y0)*dc_x   
+```python                                                                                                 
+     # the t_numer ==> ua                            alternate notation
+                                                     dc_x = (x3 - x2)
+                                                     dc_y = (y3 - y2)
+     (x3 - x2) * (y0 - y2) - (y3 - y2) * (x0 - x2)   (y0 - y2) * dc_x - (x0 - x2) * dc_y
+ua = --------------------------------------------  = ------------------------------------
+     (y3 - y2) * (x1 - x0) - (x3 - x2) * (y1 - y0)   (x1 - x0) * dc_y - (y1 - y0) * dc_x
 
-     # the s_numer ==> ub                                                          b =         b_0    <=   b_1
-     (x1 - x0)(y0 - y2) - (y1 - y0)(x0 - x2)   (y1 - y2)*dc_x - (x1 - x2)*dc_y     b = (y1 - y2)*dc_x <= (x1 - x2)*dc_y
-ub = --------------------------------------  = --------------------------------- = 
-     (y3 - y2)(x1 - x0) - (x3 - x2)(y1 - y0)   (x1 - x0)*dc_y - (y1 - y0)*dc_x
+     # the s_numer ==> ub
+     (x1 - x0) * (y0 - y2) - (y1 - y0) * (x0 - x2)   (y1 - y2) * dc_x - (x1 - x2) * dc_y
+ub = --------------------------------------------  = ------------------------------------
+     (y3 - y2) * (x1 - x0) - (x3 - x2) * (y1 - y0)   (x1 - x0) * dc_y - (y1 - y0) * dc_x
 
-denominator = (y3 -y2)*(x1 - x0) - (x3 - x2) * (y1 - y0) = (x1 - x0)*dc_y - (y1 - y0)*dc_x
+denominator = (y3 - y2) * (x1 - x0) - (x3 - x2) * (y1 - y0)
+#           = (x1 - x0) * dc_y - (y1 - y0)  * dc_x
 
-x = x0 + ua (x1 - x0)
-y = y0 + ub (y1 - y0)
+# numerator tests
+
+a0 = (y0 - y2) * dc_x  # -- from ua
+a1 = (x0 - x2) * dc_y
+a = a_0 <= a_1
+
+b0 = (y1 - y2) * dc_x  # -- from ub
+b1 = (x1 - x2) * dc_y
+b = b_0 <= b_1
+
+x = x0 + ua * (x1 - x0)
+y = y0 + ub * (y1 - y0)
 
 ```
 
