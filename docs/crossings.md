@@ -1,6 +1,6 @@
 # Crossings
 
-<img src="images/crossing01.png" align="right" width="300"/>
+<img src="geonumeracy/images/crossing01.png" align="right" width="300"/>
 
 Points, lines, segments.  The basic entities.
 
