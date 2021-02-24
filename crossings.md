@@ -1,10 +1,17 @@
 # Crossings
 
-
+<img src="images/crossing01.png" align="right" width="300"/>
 
 Points, lines, segments.  The basic entities.
 
 Inside, outside, on, equal.  The basic questions.
+
+Looks simple doesn't it, when you look at the image.
+
+Two segments intersect/cross when they overlap.  This can include when both segments meet at a common point or when the start and end points are on opposite sides of the other segment AND their coordinates share the same spatial domain.
+
+Intersection, or lack thereof, is the basis for many geometry problems but it isn't confined to geometry.
+
 
 ## Background
 
