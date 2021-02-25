@@ -5,7 +5,7 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   A brief introduction to segment crossing, the notation and basic equations.
 
-  Crossings, crossroads [^1] and intersections... the non-math stuff too.
+  Crossings, crossroads (1) and intersections... the non-math stuff too.
   
 * [Clipping](/docs/clipping.md)
 
@@ -20,4 +20,4 @@ Things numeric relating to geometry and computational geometry that I have disco
 
 
 
-[^1]: 1. Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
+(1)  Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
