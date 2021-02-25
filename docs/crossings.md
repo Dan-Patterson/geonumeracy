@@ -2,29 +2,37 @@
 
 <img src="../images/crossing01.png" align="right" width="300"/>
 
-Points, lines, segments.  The basic entities.
+Points, lines segments.  The basic entities.
 
-Inside, outside, on, equal.  The basic questions.
+Inside, outside, left of, right of, on, equal.  The basic questions.
 
 Looks simple doesn't it, when you look at the image.
 
-Two segments intersect/cross when they overlap.  This can include when both segments meet at a common point or when the start and end points are on opposite sides of the other segment AND their coordinates share the same spatial domain.
+Two segments intersect/cross when they overlap.  This can include:
+  - both segments meet at a common point or 
+  - start and end points are on opposite sides of the other segment AND their coordinates share the same spatial domain.
 
 Intersection, or lack thereof, is the basis for many geometry problems but it isn't confined to geometry.
 
 
 ## Background
 
-This section will lay the foundational terminology for this and subsequent sections.  The reference section contains links to those that I have found most useful.  It is not a complete or comprehensive list.
+This section will lay the foundational terminology for this and subsequent sections.
+The reference section contains links to those that I have found most useful.
+It is not a complete or comprehensive list.
 
 
 **Terms**
 
 - point
 
-    A location denoted by X, Y coordinates.  I only work with coordinates which are planar.  For the maths, think of an X,Y graph.  For those in the spatial fields, think `projected coordinates`, like UTM.
+    A location denoted by X, Y coordinates.  I only work with coordinates which are planar.  
+    For the maths, think of an X,Y graph.  
+    For those in the spatial fields, think `projected coordinates`, like UTM.
 
-    Points are the basic building block of geometry.  I will ignore the `Z` axis/dimension for now.  If `X` and `Y` are used for location, then consider `Z` to represent height or some other measureable attribute for that location. 
+    Points are the basic building block of geometry.
+    `X` and `Y` are used to denote location.  Any associated `Z` represents height or some other measureable attribute for that location.
+    I will ignore the `Z` axis/dimension for now.  
 
 - segment
 
@@ -37,7 +45,7 @@ This section will lay the foundational terminology for this and subsequent secti
 
 **Notations**
 
-Points are represented by a numpy Nx2 ndarray.  For example, this is a square.  The first column is the X-coordinates and the second column is the Y-coordinates.
+Points can be represented by a numpy Nx2 ndarray.  The X coordinates are in the first column and the Y coordinates in the second column.  Each row is a point.
 
 ```
 pnts # -- An array of points
@@ -54,8 +62,13 @@ seg_ravel
 array([  0.00,   0.00,   0.00,  10.00])  # -- same as seg, but with the pairs raveled/flattened
 
 ```
-The array need not represent anything other a series of points.  In this particular case, it was used to represent a polyline and/or a polygon.
-Why?  The points are ordered in clockwise order and the first and last points are the same.  Others use counter-clockwise order to represent poly/* geometries, but personally... I found it counter-productive ;).
+The array need not represent anything other a series of points.  
+In this particular case, it was used to represent a square as a polyline and/or a polygon.
+
+Why?  
+
+The points are ordered in clockwise order and the first and last points are the same.
+Others use counter-clockwise order to represent poly/* geometries, but personally... I found it counter-productive ;).
 
 
 ```
@@ -80,8 +93,17 @@ If I wanted to find the intersections between 100 segments in one data set and 1
 
 If you are with me, then press on.
 
+---
 
-**Two equations with two unknowns**
+## Two equations with two unknowns
+
+Two line segments being tested for intersection can be represented by the following equations.
+I have included a couple of variants of the equation notations that exist in the literature.
+
+Remember the notations from above...
+
+  - x0, y0 -> x1, y1  represent the primary segment
+  - x2, y2 -> x3, y3  represent the secondary segment
 
 ```python                                                                                                 
      # the t_numer ==> ua                            alternate notation
@@ -96,8 +118,9 @@ ua = --------------------------------------------  = ---------------------------
 ub = --------------------------------------------  = ------------------------------------
      (y3 - y2) * (x1 - x0) - (x3 - x2) * (y1 - y0)   (x1 - x0) * dc_y - (y1 - y0) * dc_x
 
+
 denominator = (y3 - y2) * (x1 - x0) - (x3 - x2) * (y1 - y0)
-#           = (x1 - x0) * dc_y - (y1 - y0)  * dc_x
+# -- or     = (x1 - x0) * dc_y - (y1 - y0)  * dc_x
 
 # numerator tests
 
@@ -133,16 +156,19 @@ Given 4 points, if there are < 4 unique points, then the segments intersect at o
 
 **Second check**
 
-If the denominator in the above equations is zero (`denom == 0`), then there is no intersection.  The segments are either parallel or collinear but not touching.
+If the denominator is zero (`denom == 0`), then there is no intersection.  The segments are either parallel or collinear but not touching.
+
 ```python
 denom = x10 * y32 - y10 * x32  # -- 18.0  equivalent to ... np.cross(p1-p0, p3-p2)
 ```
+
 So the segments do intersect (surprise!).
 
 
 **Third, fourth and fifth checks**
 
 Determine the other ``cross-products``.
+
 ```python
 s_num = x10 * y02 - y10 * x02
 t_num = x32 * y02 - y32 * x02
@@ -165,6 +191,7 @@ if np.logical_or((s_num > denom) == denom_gt0, (t_num > denom) == denom_gt0)
 **Final check**
 
 The two segments intersect as shown in the figure.
+
 ```python
 t = t_num / denom
 x = x0 + t * x10
@@ -172,16 +199,20 @@ y = y0 + t * y10
 
 x, y  # (1.333..., 8.333...)
 ```
+
 It may look convoluted, but that is all it is doing... checking to see where the points reside with respect to their segments.
 
 Here are the bits put altogether.
 
 **NOW** of course it is pretty useless!  
 
-Determining whether two segments intersect one pair at a time.  Numpy offers the capability to vectorize the calculations for multiple comparisons, whether it is one-to-many or many-to-many.  
+Determining whether two segments intersect one pair at a time would be slow.
+
+Numpy offers the capability to vectorize the calculations for multiple comparisons, whether it is one-to-many or many-to-many.  
 
 The code is included in the ``scripts`` folder.
 
+The generic steps are outlined in ``intersects``.
 
 ```python
 
