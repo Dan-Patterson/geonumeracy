@@ -31,23 +31,27 @@ It is not a complete or comprehensive list.
     For those in the spatial fields, think `projected coordinates`, like UTM.
 
     Points are the basic building block of geometry.
-    `X` and `Y` are used to denote location.  Any associated `Z` represents height or some other measureable attribute for that location.
+    `X` and `Y` are used to denote location.  Any associated `Z` represents height or some
+    other measureable attribute for that location.
     I will ignore the `Z` axis/dimension for now.  
 
 - segment
 
-    A portion of a `line`/`polyline`.  The connection between two points.  The second building block for polylines and polygons.
+    A portion of a `line`/`polyline`.  The connection between two points.  The second building
+    block for polylines and polygons.
     
- - polyline and polygon
+- polyline and polygon
 
-   I will use the terms `polyline` and `polygons` throughout.  The former represents the perimeter of the latter.
+   I will use the terms `polyline` and `polygons` throughout.  The former represents the
+   perimeter of the latter.
 
 
 **Notations**
 
-Points can be represented by a numpy Nx2 ndarray.  The X coordinates are in the first column and the Y coordinates in the second column.  Each row is a point.
+Points can be represented by a numpy Nx2 ndarray.  The X coordinates are in the first column and
+the Y coordinates in the second column.  Each row is a point.
 
-```
+```python
 pnts # -- An array of points
 array([[  0.00,   0.00],
        [  0.00,  10.00],
@@ -71,13 +75,16 @@ The points are ordered in clockwise order and the first and last points are the 
 Others use counter-clockwise order to represent poly/* geometries, but personally... I found it counter-productive ;).
 
 
-```
+```python
 pnts    - The points used to represent geometry.
 x, y    - A generic point or series of points.  
-          If `pnts` above, represented any set of points, then `x,y` would be used to represent their coordinates.
-          If the points belonged to a segment, polyline or polygon, then one of the notations that follow would be
+          If `pnts` above, represented any set of points, then `x,y` would
+          be used to represent their coordinates.
+          If the points belonged to a segment, polyline or polygon, then
+          one of the notations that follow would be
           used to indicate their special condition.
-x0, y0  - The first two coordinates in `seg` or `seg_ravel`.  These represent the first point in a segment.
+x0, y0  - The first two coordinates in `seg` or `seg_ravel`.  These represent the
+          first point in a segment.
 x1, y1  - The second two coordinates, representing the last point in the segment.
 x2, y2  - As above, but for another segment
 x3, y3
