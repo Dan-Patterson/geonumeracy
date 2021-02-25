@@ -18,4 +18,6 @@ Things numeric relating to geometry and computational geometry that I have disco
   We will see how you mastered intersections as the first step to clipping and erasing and the like.
 
 
-<a id="1"> Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.</a>
+
+
+<a id="1">1. Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.</a>
