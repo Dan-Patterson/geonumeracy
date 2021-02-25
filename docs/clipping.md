@@ -164,5 +164,5 @@ def p_c_p(clipper, poly):
         final[:, 1] = ys
         return final, both, pc_ids  # poly_clipper_ids
     return None, both, None
-
-[Array Broadcasting](https://numpy.org/devdocs/user/theory.broadcasting.html)
+```
+[(1) Array Broadcasting](https://numpy.org/devdocs/user/theory.broadcasting.html)
