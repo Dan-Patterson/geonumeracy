@@ -4,6 +4,21 @@
 
 The image to the right shows the results of intersecting two sets of segments which coincedently form two polygons.
 
+The sequential steps show how each segment of the `clipper` intersects with the segments of `poly`.
+
+The clips are keep in a `left of` and `right of` containers (read... outside vs inside).
+
+The `right of` data are used in the next clipping step... and so on, and so on.
+
+At the end, it is simply a matter of organizing the `outside` and `inside` bits (aka, erase and clip).
+
+Note the word `simply`.  This is where the `yeah but...` comments start.  
+All the corner cases, where things aren't so *simple*.
+
+The journey begins.
+
+---
+
 The intersection points between the point sets was determined using ``p_c_p`` below.
 
 The coordinates for the inputs are.
