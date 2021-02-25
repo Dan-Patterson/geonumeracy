@@ -2,9 +2,80 @@
 
 <img src="../images/clip_poly0to9.png" align="right" width="400"/>
 
+The image to the right shows the results of intersecting two sets of segments which coincedently form two polygons.
 
-Clip features
+The intersection points between the point sets was determined using ``p_c_p`` below.
 
+The coordinates for the inputs are.
+
+```
+#      poly                  clipper 
+array([[  0.00,   0.00],   array([[  0.00,   7.50],
+       [  0.00,  10.00],          [ 11.00,  10.50],
+       [ 10.00,  10.00],          [ 12.00,   4.50],
+       [ 10.00,   8.00],          [  8.00,   0.00],
+       [  2.00,   8.00],          [  0.00,   7.50]])
+       [  2.00,   5.50],
+       [  5.00,   5.50],
+       [  5.00,   4.00],
+       [  2.00,   4.00],
+       [  2.00,   2.00],
+       [ 10.00,   2.00],
+       [ 10.00,   0.00],
+       [  0.00,   0.00]])
+```
+
+They can be rearranged to form the raveled point pairs, which are useful for some functions
+
+```
+np.concatenate([poly[:-1], poly[1:]], axis=1)
+np.concatenate([clipper[:-1], clipper[1:]], axis=1)
+
+#  poly as segments                           clipper as segments
+array([[  0.00,   0.00,   0.00,  10.00],  array([[  0.00,   7.50,  11.00,  10.50],
+       [  0.00,  10.00,  10.00,  10.00],         [ 11.00,  10.50,  12.00,   4.50],
+       [ 10.00,  10.00,  10.00,   8.00],         [ 12.00,   4.50,   8.00,   0.00],
+       [ 10.00,   8.00,   2.00,   8.00],         [  8.00,   0.00,   0.00,   7.50]])
+       [  2.00,   8.00,   2.00,   5.50],
+       [  2.00,   5.50,   5.00,   5.50],
+       [  5.00,   5.50,   5.00,   4.00],
+       [  5.00,   4.00,   2.00,   4.00],
+       [  2.00,   4.00,   2.00,   2.00],
+       [  2.00,   2.00,  10.00,   2.00],
+       [ 10.00,   2.00,  10.00,   0.00],
+       [ 10.00,   0.00,   0.00,   0.00]])
+
+```
+
+Or they can be shaped to from 3D arrays of coordinates of from-to pairs.
+
+```
+np.concatenate([poly[:-1], poly[1:]], axis=1).reshape(-1, 2, 2)
+np.concatenate([clipper[:-1], clipper[1:]], axis=1).reshape(-1, 2, 2)
+
+#  poly as from-to point pairs    clipper as from-to point pairs
+array([[[  0.00,   0.00],         array([[[  0.00,   7.50],
+        [  0.00,  10.00]],                [ 11.00,  10.50]],
+       [[  0.00,  10.00],                [[ 11.00,  10.50],
+        [ 10.00,  10.00]],                [ 12.00,   4.50]],
+...    snip                       ...    snip
+       [[ 10.00,   2.00],                [[  8.00,   0.00],
+        [ 10.00,   0.00]],                [  0.00,   7.50]]])
+       [[ 10.00,   0.00],
+        [  0.00,   0.00]]])
+```
+
+The resultant intersections between the segments are shown below.
+
+If you examine the poly ID and clip ID columns and the figure above, you will see how one can sequentially construct a ``clip`` or ``erase`` from the intersection points and the point inside and/or outside their respective segments.
+
+Steps 7 and 8 in the image represent the cases where segments that are `inside` the clipper bounds are kept (clip, step 7) or are removed (erase, step 8).
+
+How you can assemble the ``bits`` for form polygons will be the subject of a subsequent document.
+
+I won't become obvious anytime soon, but study the coordinates, their arrangements, the intersections and the image in the interim.
+
+More later.
 
 ```
 # intersections            poly clip
@@ -57,11 +128,6 @@ def p_c_p(clipper, poly):
         both = z0 & z1
         xs = u_a * x3_x2 + p_cl[:-1][:, 0]
         ys = u_a * y3_y2 + p_cl[:-1][:, 1]
-    #  whre = np.vstack(both.nonzero()).T
-    # bothT = both.T
-    # xs = xs.T[bothT]
-    # ys = ys.T[bothT]
-    # poly_clipper_ids = np.vstack(np.nonzero(bothT)).T
     xs = xs[both]
     ys = ys[both]
     pc_ids = np.vstack(both.nonzero()).T
