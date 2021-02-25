@@ -82,13 +82,22 @@ array([[[  0.00,   0.00],         array([[[  0.00,   7.50],
 
 The resultant intersections between the segments are shown below.
 
-If you examine the poly ID and clip ID columns and the figure above, you will see how one can sequentially construct a ``clip`` or ``erase`` from the intersection points and the point inside and/or outside their respective segments.
+If you examine the poly ID and clip ID columns and the figure above, you will see how one can sequentially construct
+a ``clip`` or ``erase`` from the intersection points and the point inside and/or outside their respective segments.
 
-Steps 7 and 8 in the image represent the cases where segments that are `inside` the clipper bounds are kept (clip, step 7) or are removed (erase, step 8).
+Steps 7 and 8 in the image represent the cases where segments that are `inside` the clipper bounds are kept
+(clip, step 7) or are removed (erase, step 8).
 
 How you can assemble the ``bits`` for form polygons will be the subject of a subsequent document.
 
 I won't become obvious anytime soon, but study the coordinates, their arrangements, the intersections and the image in the interim.
+
+The order of the ID values in the listing below is organized by the `poly ID` values.
+This shows the first poly segment (0) was intersected by the first and third clipper (0, 3).
+The second poly segment (1) was intersected by the first clipper (0).  Poly segments 2 and 3
+had no intersection points ... and so on.
+
+Understand the structure of how the IDs can be arranged.. by poly or by clipper... since they are both useful.
 
 More later.
 
@@ -108,6 +117,9 @@ array([[  0.00,   7.50],   [ 0,   0],
 
 ```
 
+The basic code to perform the intersections is listed in `p_c_p` (poly-clips-poly).
+The seemingly strange notation `dc[:, 0][:, None]` is used to produce a *broadcastable* data structure 
+that enables one to perform operations of arrays of varying shapes. [1]
 ```
 def p_c_p(clipper, poly):
     """intersect poly features.
@@ -152,3 +164,5 @@ def p_c_p(clipper, poly):
         final[:, 1] = ys
         return final, both, pc_ids  # poly_clipper_ids
     return None, both, None
+
+[1. Array Broadcasting](https://numpy.org/devdocs/user/theory.broadcasting.html?highlight=broadcast)
