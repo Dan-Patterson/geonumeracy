@@ -23,7 +23,7 @@ The intersection points between the point sets was determined using ``p_c_p`` be
 
 The coordinates for the inputs are.
 
-```
+```python
 #      poly                  clipper 
 array([[  0.00,   0.00],   array([[  0.00,   7.50],
        [  0.00,  10.00],          [ 11.00,  10.50],
@@ -42,7 +42,7 @@ array([[  0.00,   0.00],   array([[  0.00,   7.50],
 
 They can be rearranged to form the raveled point pairs, which are useful for some functions
 
-```
+```python
 np.concatenate([poly[:-1], poly[1:]], axis=1)
 np.concatenate([clipper[:-1], clipper[1:]], axis=1)
 
@@ -64,7 +64,7 @@ array([[  0.00,   0.00,   0.00,  10.00],  array([[  0.00,   7.50,  11.00,  10.50
 
 Or they can be shaped to from 3D arrays of coordinates of from-to pairs.
 
-```
+```python
 np.concatenate([poly[:-1], poly[1:]], axis=1).reshape(-1, 2, 2)
 np.concatenate([clipper[:-1], clipper[1:]], axis=1).reshape(-1, 2, 2)
 
@@ -101,7 +101,7 @@ Understand the structure of how the IDs can be arranged.. by poly or by clipper.
 
 More later.
 
-```
+```python
 # intersections            poly clip
 #          X       Y        ID   ID
 array([[  0.00,   7.50],   [ 0,   0],
@@ -120,7 +120,9 @@ array([[  0.00,   7.50],   [ 0,   0],
 The basic code to perform the intersections is listed in `p_c_p` (poly-clips-poly).
 The seemingly strange notation `dc[:, 0][:, None]` is used to produce a *broadcastable* data structure 
 that enables one to perform operations of arrays of varying shapes. [1]
-```
+
+
+```python
 def p_c_p(clipper, poly):
     """intersect poly features.
 
