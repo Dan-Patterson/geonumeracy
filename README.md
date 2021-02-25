@@ -4,6 +4,8 @@ Things numeric relating to geometry and computational geometry that I have disco
 * [Crossings](/docs/crossings.md)
 
   A brief introduction to segment crossing, the notation and basic equations.
+
+  Crossings, crossroads[^1] and intersections... the non-math stuff too.
   
 * [Clipping](/docs/clipping.md)
 
@@ -14,3 +16,6 @@ Things numeric relating to geometry and computational geometry that I have disco
   Oh.. and keep stuff in order while you are doing it.
 
   We will see how you mastered intersections as the first step to clipping and erasing and the like.
+
+
+[^1]: Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
