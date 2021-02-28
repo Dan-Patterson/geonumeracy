@@ -50,7 +50,7 @@ The ``_side_`` function returns the set of values shown below.  ``r`` is the cro
 Two versions of determining points inside (``in_`` and ``inside``) are calculated.  ``in_`` incorporates winding-number calculations for point
 inclusion in polygons.  It is interesting to examine under what circumstances these parameters are similar or different.
 
-```
+```python
 r, in_, inside, outside, equal_ = _side_(b4, c1)
 
 r
@@ -94,7 +94,8 @@ The number of points in each geometry object need not be the same since array-br
 facilitate the calculations.
 
 A term like ``y0[:, None]`` and other variants change the shape and dimension of the array as follows:
-```
+
+```python
 y0  # -- the base array
 # y0.ndim  : 1
 # y0.shape : (6,)
@@ -115,7 +116,8 @@ array([[ 10.00,  13.00,  14.00,  13.00,  11.50,  10.00]])
 ```
 
 If you start with 2D arrays, then the transitions move them to 3D arrays.
-```
+
+```python
 pnts[:, None]
 # ndim = 3
 # shape = (6, 1, 2)
@@ -146,7 +148,8 @@ array([[[  0.00,  10.00],
 ```
 
 The principles of ``_side_`` are used in subsequent code examples for polygon splitting, clipping and other overlay operations.
-```
+
+```python
 def _side_(pnts, poly):
     """Return points inside, outside or equal/crossing a convex poly feature."""
     if pnts.ndim < 2:
