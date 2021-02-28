@@ -72,9 +72,10 @@ array([[0, 1, 1, 1, 0, 0],   array([[1, 0, 0, 0, 1, 1],
 inside                     outside                    equal_
 array([[  2.50,  13.00]])  array([[  0.00,  10.00],   array([],
                                   [  1.00,  13.00],         shape=(0, 2),
-                                  [  3.00,  14.00],          dtype=float64)
-                                  [  1.00,  11.50],
-                                  [  0.00,  10.00]])
+_in_                              [  3.00,  14.00],          dtype=float64)
+array([[  1.00,  13.00],          [  1.00,  11.50],
+       [  2.50,  13.00],          [  0.00,  10.00]])
+       [  1.00,  11.50]])
 
 # -- calculate in_ using winding number 
 _wn_(b4, c1)
@@ -99,10 +100,12 @@ A term like ``y0[:, None]`` and other variants change the shape and dimension of
 y0  # -- the base array
 # y0.ndim  : 1
 # y0.shape : (6,)
-# array([ 10.00,  13.00,  14.00,  13.00,  11.50,  10.00])
+
+array([ 10.00,  13.00,  14.00,  13.00,  11.50,  10.00])
 
 # reshape to produce a column array.
 y0[:, None]  # ndim = 2, shape = (6, 1)
+
 array([[ 10.00],
        [ 13.00],
        [ 14.00],
@@ -112,7 +115,9 @@ array([[ 10.00],
 
 # reshape to change the row array to a 2D array... note the additional [ ] around the coordinates
 y0[None, :]  # ndim = 2, shape = (1, 6)
+
 array([[ 10.00,  13.00,  14.00,  13.00,  11.50,  10.00]])
+
 ```
 
 If you start with 2D arrays, then the transitions move them to 3D arrays.
