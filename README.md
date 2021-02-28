@@ -1,6 +1,11 @@
 # geonumeracy
 Things numeric relating to geometry and computational geometry that I have discovered.
 
+* [Side](/docs/side.md)
+
+  In, out, on, neither, both, left of, right of.
+  Questions, questions.
+
 * [Crossings](/docs/crossings.md)
 
   A brief introduction to segment crossing, the notation and basic equations.
