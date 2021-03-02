@@ -1,4 +1,4 @@
-# geonumeracy
+# Geo Numeracy
 Things numeric relating to geometry and computational geometry that I have discovered.
 
 * [Side](/docs/side.md)
