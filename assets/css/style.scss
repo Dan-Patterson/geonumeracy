@@ -2,6 +2,10 @@
 ---
 
 @import "{{ site.theme }}";
+/* Wrapper */
+.wrapper {
+  width:960px;
+}
 section {
   width:1000px;
   float:right;
