@@ -2,22 +2,3 @@
 ---
 
 @import "{{ site.theme }}";
-section {
-  width:650px;
-  float:left;
-  padding-bottom:50px;
-}
-
-@media print, screen and (max-width: 1400px) {
-
-  div.wrapper {
-    width:auto;
-    margin:0;
-  }
-
-  header, section, footer {
-    float:none;
-    position:static;
-    width:auto;
-  }
-}
