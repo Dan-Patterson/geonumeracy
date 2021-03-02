@@ -7,7 +7,7 @@ theme: jekyll-theme-dinky
 show_downloads: true
 
 # Name of website
-name: geonumeracy
+name: Geo Numeracy
 description: Working with geometry using numpy, part II.
 
 # [npg](voronoi2.png)
