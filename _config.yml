@@ -23,7 +23,7 @@ url: "https://dan-patterson.github.io/geonumeracy"
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
 # avatar: "/assets/img/avatar-icon.png"
-avatar: "/images/polygons_5.png"
+# avatar: "/images/polygons_5.png"
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
