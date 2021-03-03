@@ -36,7 +36,7 @@ markdown: GFM
 
 #navbar-img: "/assets/img/bgimage.png"
 #footer-img: "/assets/img/bgimage.png"
-page-img: "/images/polygons_4.png"
+page-img: "/images/polygons_5.png"
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
