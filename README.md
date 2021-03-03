@@ -1,6 +1,6 @@
 # Geo Numeracy
 
-<img src="/images/polygons_5.png" align="right" width="300"/>
+<img src="images/polygons_5.png" align="right" width="300"/>
 
 Things numeric relating to geometry and computational geometry that I have discovered.
 
