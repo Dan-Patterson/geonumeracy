@@ -34,10 +34,10 @@ Out[3]: array([  4.00,   4.00])
 In [4]: np.mean(A[:-1], axis=0)
 Out[4]: array([  5.00,   5.00])
 ```
-The ``[:-1]`` in [4] represents `slicing`.  The interpretation, then reads, `use all values up to, but not including the last (-1, counting back from the end.).
+The ``[:-1]`` in [4] represents `slicing`.  The interpretation, then reads, `use all values up to, but not including the last` (-1, counting back from the end.).
 It could have also have been written as ``A[:4]`` meaning include all points up to the 4th index.
 
-Slicing takes a simple format.  "array[start index: stop index: step]*.  You need to remember that arrays use a 0-based count, so index value 1, is the second entry.
+Slicing takes a simple format.  *array[start index: stop index: step]*.  You need to remember that arrays use a 0-based count, so index value 1, is the second entry.
 The following shows how to slice *A* starting at index position 1, up to index 5, sampling every 2nd value
 ```python
 In [5]: A[1:5:2]
