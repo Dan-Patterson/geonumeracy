@@ -2,15 +2,15 @@
 ---
 
 @import "{{ site.theme }}";
-/* Wrapper */
+/* Wrapper change from 960px  */
 .wrapper {
-  width:960px;
+  width:1280px;
 }
 
-/* Section - for main page content */
+/* Section - for main page content changed from 650*/
 
 section {
-  width:650px;
+  width:960px;
   float:right;
   padding-bottom:50px;
 }
