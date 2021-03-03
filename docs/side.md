@@ -41,11 +41,11 @@ array([[  0.00,  10.00],    array([[  0.50,  10.50],
        [  0.00,  10.00]])          [  2.00,  11.50],
                                    [  0.50,  10.50]])
 ```
-The coordinates for ``b4`` are used here to just represent points.  The actually form a polygon, yet they need not.
+The coordinates for ``b4`` are used here to just represent points.  They actually form a polygon, yet they need not.
 
 The ``c1`` array represents a polygon, as per previous definition.
 
-The ``_side_`` function returns the set of values shown below.  ``r`` is the cross-product array, from which terms used to determine parameters.
+The ``_side_`` function returns the set of values shown below.  ``r`` is the cross-product array, which is used to determine parameters.
 
 Two versions of determining points inside (``in_`` and ``inside``) are calculated.  ``in_`` incorporates winding-number calculations for point
 inclusion in polygons.  It is interesting to examine under what circumstances these parameters are similar or different.
