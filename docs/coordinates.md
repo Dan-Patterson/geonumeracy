@@ -45,3 +45,28 @@ Out[5]:
 array([[  0.00,  10.00],
        [ 10.00,   0.00]])
 ```
+
+## Creating geometry
+
+A number of standard geometric patterns can be created readily using numpy.  The basic code and examples follow.
+
+### Triangles
+
+```
+# Create a series of triangles with 3 columns and 2 rows, with X, Y steps of 1x1.  The lower left is at (0, 0).
+In [5]: a = triangle(dx=1, dy=1, x_cols=3, y_rows=2, orig_x=0, orig_y=1, kind=2, asGeo=False)
+in [6]: a
+Out[6]: 
+array([[[  0.000,   0.000],
+        [  0.500,   1.000],
+        [  1.000,   0.000],
+        [  0.000,   0.000]],
+
+       [[  0.500,   1.000],
+        [  1.500,   1.000],
+        [  1.000,   0.000],
+        [  0.500,   1.000]],
+        ... snip ...
+In [7]: a.shape
+Out[7]: (12, 4, 2)
+```
