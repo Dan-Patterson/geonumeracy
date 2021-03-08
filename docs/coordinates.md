@@ -130,6 +130,7 @@ def rectangle(dx=1, dy=-1, x_cols=1, y_rows=1, orig_x=0, orig_y=1):
     return a
 ```
 The result.
+
 <img src="../images/rectangles.png" align="center" width="200"/>
 
 ### Triangles
@@ -188,4 +189,5 @@ def triangle(dx=1, dy=1, x_cols=1, y_rows=1, orig_x=0, orig_y=1):
     return a
 ```
 The result.
+
 <img src="../images/triangles.png" align="center" width="300"/>
