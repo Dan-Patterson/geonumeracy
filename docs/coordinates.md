@@ -46,7 +46,8 @@ array([[  0.00,  10.00],
        [ 10.00,   0.00]])
 ```
 
-## Creating geometry
+----
+# Creating geometry
 
 A number of standard geometric patterns can be created readily using numpy.  The basic code and examples follow.
 
@@ -58,7 +59,7 @@ The pattern for a sequence of rectanges requires:
   - the number of rows and columns to create
 
 For example
-```
+```python
 In [1]: rectangle(dx=1, dy=-1, x_cols=2, y_rows=2, orig_x=0, orig_y=1)
 Out[1]: 
 array([[[   0.0,    0.0],
@@ -88,7 +89,7 @@ array([[[   0.0,    0.0],
 
 The function code with a full documentation string follows.
 
-```
+```python
 def rectangle(dx=1, dy=-1, x_cols=1, y_rows=1, orig_x=0, orig_y=1):
     """Create a point array to represent a series of rectangles or squares.
 
@@ -136,7 +137,7 @@ The pattern for a sequence of triangles requires:
   - a increment for both the x and y directions (dx and dy)
   - the number of rows and columns to create
 
-```
+```python
 # Create a series of triangles with 3 columns and 2 rows, with X, Y steps of 1x1.  The lower left is at (0, 0).
 In [1]: a = triangle(dx=1, dy=1, x_cols=3, y_rows=2, orig_x=0, orig_y=1)
 In [2]: a
@@ -158,7 +159,7 @@ Out[3]: (12, 4, 2)
 
 A `seed` shape consists of two triangles, one pointing up and one down.  This is the basic building block which is repeated.
 
-```
+```python
 def triangle(dx=1, dy=1, x_cols=1, y_rows=1, orig_x=0, orig_y=1):
     """Create a row of meshed triangles.
 
