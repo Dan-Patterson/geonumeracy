@@ -4,6 +4,10 @@
 
 Things numeric relating to geometry and computational geometry that I have discovered.
 
+* [Coordinates and shapes](/docs/coordinates.md)
+
+  Planar/Euclidean space.  Basic coordinate notation. Creating basic geometric shapes and patterns.
+
 * [Side](/docs/side.md)
 
   In, out, on, neither, both, left of, right of.
