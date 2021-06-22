@@ -223,5 +223,9 @@ This is an example of the last which is based on the offset buffer, but using ar
 
 So remember what goes into the buffer and that not all information that you would expect to see is shown in all geometry representations.
 
-Code for producing two of the less common buffers are given in the `scale_by_area` and `offset_buffer` methods in 
-the numpy_geometry module in the following script *...arcpro_npg/npg/npg/npg_geom.py*
+Code for producing two of the less common buffers are given in the
+
+- `scale_by_area` and
+- `offset_buffer`
+
+methods in the `numpy_geometry` module in the following script *...numpy_geomeetry/arcpro_npg/npg/npg/npg_geom.py*
