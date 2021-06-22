@@ -228,4 +228,4 @@ Code for producing two of the less common buffers are given in the
 - `scale_by_area` and
 - `offset_buffer`
 
-methods in the `numpy_geometry` module in the following script *...numpy_geomeetry/arcpro_npg/npg/npg/npg_geom.py*
+methods in the `numpy_geometry` module in the following script *...numpy_geometry/arcpro_npg/npg/npg/npg_geom.py*
