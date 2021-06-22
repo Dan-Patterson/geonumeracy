@@ -29,7 +29,9 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   We will see how you mastered intersections as the first step to clipping and erasing and the like.
 
+* [Buffer mysteries](/docs/buffer/buffer_mysteries.md)
 
+  Everyone loves a buffer.  Are they arcs? circles? or n-gons? 
 
 
 (1)  Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
