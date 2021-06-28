@@ -8,7 +8,7 @@ show_downloads: false # true otherwise
 
 # Name of website
 name: Geo Numeracy
-description: Working with geometry using numpy, part II.
+description: Working with geometry using numpy, and other musings.
 
 # [npg](voronoi2.png)
 # Your name to show in the footer
