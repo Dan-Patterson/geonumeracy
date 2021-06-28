@@ -33,5 +33,8 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   Everyone loves a buffer.  Are they arcs? circles? or n-gons? 
 
+* [Dissolve those boundaries](/docs/dissolve/Dissolve.md)
+
+  Removing boundaries between polygon geometries.
 
 (1)  Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
