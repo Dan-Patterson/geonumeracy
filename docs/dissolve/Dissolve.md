@@ -6,9 +6,9 @@ It exists already.
 
 So why another one? 
 
-Simple.  You need an attribute to dissolve on.
+Simple.  You need an attribute to dissolve on.  This one doesn't.
 
-You are doing your aggregation of shapes based on a common attribute, so it is grouping things based on commonalities.
+Usually, you are doing the aggregation of shapes based on a common attribute, so it is grouping things based on commonalities.
 
 The work around, is to fill a column with a common attribute, then away you go.
 
