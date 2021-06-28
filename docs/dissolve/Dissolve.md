@@ -2,7 +2,7 @@
 
 It exists already.
 
- Dissolve (Data Management tools) 
+[Dissolve (Data Management tools)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/dissolve.htm) 
 
 So why another one? 
 
@@ -49,6 +49,8 @@ You can do a lexicographic sort of the left-most coordinate to speed up the iden
 
 This example shows two groupings of geometry.  I chose the dump the holes option.
 
+Bird on Dog ... before and after dissolve
+
 <img src="dissolve03.png" white-space: nowrap align="left" width="200"/>
 <img src="dissolve02.png" align="center" width="200"/>
 
@@ -57,12 +59,11 @@ The Dissolve Boundaries tool
 
 <img src="dissolve_tool.png" align="center" width="200"/>
 
-References
+**References**
 
-"https://github.com/Dan-Patterson/numpy_geometry" 
-numpy geometry 
+[arcpro_npg ... npg ... (n)um(p)y (g)eometry the code](https://github.com/Dan-Patterson/numpy_geometry)
 
-arcpro_npg ... npg ... (n)um(p)y (g)eometry the code
-
+----
 Try taking down a few boundaries yourself... either in life or geometry ‌‌ .
-Bird on Dog ... before and after dissolve
+
+
