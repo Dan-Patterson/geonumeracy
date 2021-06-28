@@ -40,13 +40,21 @@ So some examples:
 Laughing person ... before and after dissolve
 
 
+<img src="dissolve00.png" white-space: nowrap align="left" width="200"/>
+<img src="dissolve01.png" align="center" width="200"/>
+
 Note the shapes aren't in order which makes it a challenge.
 You can do a lexicographic sort of the left-most coordinate to speed up the identification of adjoining shapes.
 
 
 This example shows two groupings of geometry.  I chose the dump the holes option.
 
+<img src="dissolve02.png" white-space: nowrap align="left" width="200"/>
+<img src="dissolve03.png" align="center" width="200"/>
+
+
 The Dissolve Boundaries tool
+
 
 References
 
