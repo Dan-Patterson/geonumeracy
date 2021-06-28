@@ -4,7 +4,7 @@
 title: Geo Numeracy
 theme: jekyll-theme-dinky
 # theme: jekyll-theme-cayman
-show_downloads: true
+show_downloads: false # true otherwise
 
 # Name of website
 name: Geo Numeracy
