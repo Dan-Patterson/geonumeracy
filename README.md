@@ -33,6 +33,10 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   Everyone loves a buffer.  Are they arcs? circles? or n-gons? 
 
+* [Densify geometry](/docs/densify/Densify.md)
+
+  Add points between vertices of polygon or polyline geometry.
+
 * [Dissolve those boundaries](/docs/dissolve/Dissolve.md)
 
   Removing boundaries between polygon geometries.
