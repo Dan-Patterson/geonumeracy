@@ -61,6 +61,11 @@ Head swimming? You have been using Pandas or shapely too long.
 
 Here is what a simple polygon looks like represented like an array (even an arcpy.Array )
 
+<img src="Figure_1.png" align="left" width="300"/>
+<img src="Figure_2.png" align="center" width="200"/>
+
+<p align="left">
+
 **References**
 
 [Densify by distance](https://community.esri.com/t5/python-blog/densify-by-distance/ba-p/1004894)
