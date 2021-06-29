@@ -61,10 +61,9 @@ Head swimming? You have been using Pandas or shapely too long.
 
 Here is what a simple polygon looks like represented like an array (even an arcpy.Array )
 
-<img src="Figure_1.png" align="left" width="300"/>
-<img src="Figure_2.png" align="center" width="200"/>
+<img src="Figure_1.png" align="left" width="400"/>
+<img src="Figure_2.png" align="rightt" width="300"/>
 
-<p align="left">
 
 **References**
 
