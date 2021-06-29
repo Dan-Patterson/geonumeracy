@@ -25,7 +25,7 @@ def _pnts_on_line_(a, spacing=1, is_percent=False):  # densify by distance
     is_percent : boolean
         Express the densification as a percent of the total length.
     """
-    a = _get_base_(a)
+    
     N = len(a) - 1                                    # segments
     dxdy = a[1:, :] - a[:-1, :]                       # coordinate differences
     leng = np.sqrt(np.einsum('ij,ij->i', dxdy, dxdy)) # segment lengths
