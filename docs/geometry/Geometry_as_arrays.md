@@ -2,7 +2,7 @@
 
 Take an array of 2D point objects.
 
-```
+```python
 In [1]: sq
 Out[1]: 
 Geo([[   0.00,    0.00],
@@ -42,7 +42,7 @@ The current interest is how this array can be reshaped to form other array types
 
 The following method converts the Geo array to an *object* array since the shape of the constituent parts does not have the same shape.
 
-``
+```python
 a = sq.as_arrays()
 
 In [2]: a[0]  # a[0][0].shape => (7, 2), a[0][1].shape => (4, 2)
@@ -103,3 +103,7 @@ The shape and dtype of the array depends on the part being examined.  The first 
 The remaining parts of the array are all singlepart arrays of the same dtype, but with different shapes.
 
 Here it is.
+
+<a href="url"><img src="sq.png" align="left" height="auto" width="300"></a>
+
+<br clear="all">
