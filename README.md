@@ -8,6 +8,10 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   Planar/Euclidean space.  Basic coordinate notation. Creating basic geometric shapes and patterns.
 
+* [Irregular shapes](/docs/geometry/Geometry_as_arrays.md)
+
+  Real world shapes are rarely regular.  This section introduces the concepts of **object** array geometry.
+  
 * [Side](/docs/side.md)
 
   In, out, on, neither, both, left of, right of.
