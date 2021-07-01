@@ -1,5 +1,11 @@
 ## Geometry as arrays ##
 
+- Basic constituents
+- Array representation/printing
+
+
+### Basic constituents ###
+
 Take an array of 2D point objects.
 
 ```python
@@ -107,3 +113,123 @@ Here it is.
 <a href="url"><img src="sq.png" align="left" height="auto" width="300"></a>
 
 <br clear="all">
+
+----
+
+Now, lets look at some of the ways that you can represent those data in various forms.
+
+```python
+In [11]: prn_(a)
+0 ...
+[array([[   0.00,    0.00],
+        [   2.00,    8.00],
+        [   8.00,   10.00],
+        [  10.00,   10.00],
+        [  10.00,    8.00],
+        [   9.00,    1.00],
+        [   0.00,    0.00]]) array([[   3.00,    3.00],
+                                    [   7.00,    3.00],
+                                    [   5.00,    7.00],
+                                    [   3.00,    3.00]])]
+1 ...
+[[   8.00   10.00]
+ [   8.00   11.00]
+ [   8.00   12.00]
+ [  12.00   12.00]
+ [  12.00    8.00]
+ [  10.00    8.00]
+ [  10.00   10.00]
+ [   8.00   10.00]]
+2 ...
+[[   5.00   10.00]
+ [   5.00   12.00]
+ [   6.00   12.00]
+ [   8.00   12.00]
+ [   8.00   11.00]
+ [   5.00   10.00]]
+3 ...
+[[   5.00   12.00]
+ [   5.00   15.00]
+ [   7.00   14.00]
+ [   6.00   12.00]
+ [   5.00   12.00]]
+
+In [12]: prn_geo(sq)
+
+ pnt shape  part  X       Y     
+--------------------------------
+ 000     1          0.00    0.00
+ 001     1          2.00    8.00
+ 002     1          8.00   10.00
+ 003     1         10.00   10.00
+ 004     1         10.00    8.00
+ 005     1          9.00    1.00
+ 006     1          0.00    0.00
+ 007     1  -o      3.00    3.00
+ 008     1          7.00    3.00
+ 009     1          5.00    7.00
+ 010     1  ___     3.00    3.00
+ 011     2  -o      8.00   10.00
+ 012     2          8.00   11.00
+ 013     2          8.00   12.00
+ 014     2         12.00   12.00
+ 015     2         12.00    8.00
+ 016     2         10.00    8.00
+ 017     2         10.00   10.00
+ 018     2  ___     8.00   10.00
+ 019     3  -o      5.00   10.00
+ 020     3          5.00   12.00
+ 021     3          6.00   12.00
+ 022     3          8.00   12.00
+ 023     3          8.00   11.00
+ 024     3  ___     5.00   10.00
+ 025     4  -o      5.00   12.00
+ 026     4          5.00   15.00
+ 027     4          7.00   14.00
+ 028     4          6.00   12.00
+ 029     4          5.00   12.00
+
+In [13]: prn_Geo_shapes(sq)
+
+ID : Shape ID by part
+R  : ring, outer 1, inner 0
+P  : part 1 or more
+ ID  R  P      x       y
+  1  1  1  [   0.00    0.00]
+           [   2.00    8.00]
+           [   8.00   10.00]
+           [  10.00   10.00]
+           [  10.00    8.00]
+           [   9.00    1.00]
+           [   0.00    0.00]
+  1  0  1  [   3.00    3.00]
+           [   7.00    3.00]
+           [   5.00    7.00]
+           [   3.00    3.00]
+  2  1  1  [   8.00   10.00]
+           [   8.00   11.00]
+           [   8.00   12.00]
+           [  12.00   12.00]
+           [  12.00    8.00]
+           [  10.00    8.00]
+           [  10.00   10.00]
+           [   8.00   10.00]
+  3  1  1  [   5.00   10.00]
+           [   5.00   12.00]
+           [   6.00   12.00]
+           [   8.00   12.00]
+           [   8.00   11.00]
+           [   5.00   10.00]
+  4  1  1  [   5.00   12.00]
+           [   5.00   15.00]
+           [   7.00   14.00]
+           [   6.00   12.00]
+           [   5.00   12.00]
+
+```
+For **In [11]** the *prn* function simply prints out the object array's constituent parts, numbering them at the same time.
+
+**In [12]** provides another option to view the Geo array.  The **pnt shape  part  X       Y** header is added and the parts of the array are shown with the **-o** separator.
+
+**In [13]** is another option for the Geo array.  A full header with the descriptor ** ID  R  P      x       y** provides point id information as well as the ring, part and x, y coordinate values.
+
