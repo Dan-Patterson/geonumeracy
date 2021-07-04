@@ -119,8 +119,10 @@ Here it is.
 ----
 
 </details>
+
 <details>
 <summary markdown="span">Array representation/printing</summary>         
+
 ## Array representation/printing
 
 Now, lets look at some of the ways that you can represent those data in various forms.
@@ -234,11 +236,11 @@ P  : part 1 or more
            [   5.00   12.00]
 
 ```
-</details>
-</details>
+
 For **In [11]** the *prn* function simply prints out the object array's constituent parts, numbering them at the same time.
 
 **In [12]** provides another option to view the Geo array.  The **pnt shape  part  X       Y** header is added and the parts of the array are shown with the **-o** separator.
 
 **In [13]** is another option for the Geo array.  A full header with the descriptor ** ID  R  P      x       y** provides point id information as well as the ring, part and x, y coordinate values.
-
+</details>
+</details>
