@@ -1,23 +1,24 @@
-**Clipping ... beyond simple**
+## Clipping ... beyond simple ##
 
-images
 
-Main image with all clips
+
 <img src="edgy_clp_1.png" align="right" width="300"/>
 
-1
+Let us take a tour around the two polygon shapes to the right. Clipping one shape with the other will obviously leave parts inside and outside the other.
 
-2
-
-3
-
-4
-
-5
+The intersection points, for the most part, occur along the segments.  Several intersections occur at the polygon nodes which creates special challenges during clipping.
 
 
 
-first grouping
+
+
+
+
+
+
+
+
+----
 <img src="edgy_clp_2.png" align="right" width="300"/>
 
 1
