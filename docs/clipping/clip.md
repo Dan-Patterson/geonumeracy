@@ -2,50 +2,56 @@
 
 
 
-<img src="edgy_clp_1.png" align="right" width="300"/>
+<img src="edgy_clp_1.png" align="right" width="400"/>
 
 Let us take a tour around the two polygon shapes to the right. Clipping one shape with the other will obviously leave parts inside and outside the other.
 
 The intersection points, for the most part, occur along the segments.  Several intersections occur at the polygon nodes which creates special challenges during clipping.
 
-
-
-
-
-
-
-
-
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 ----
-<img src="edgy_clp_2.png" align="right" width="300"/>
 
-1
+The top right hand corner of the image above is enlarged to the right.
 
-2
+<img src="edgy_clp_3.png" align="right" width="300"/><img src="edgy_clp_2.png" align="right" width="300"/>
 
-3
+Both polygons are clockwise oriented and their points are numbered.
 
-4
+If we assign the clipper polygon the variable name `clp` and the polygon being clipped `poly`, then the coincident points can be determined using numpy's `nonzero` and array broadcasting to do the comparison.
 
-5
+<br />
+<br />
+
+```
+# -- clp and poly are Nx2 arrays of point coordinates with shapes of (16, 2) and (73, 2) respectively.
+
+c_eq_p, p_eq_c = np.nonzero((clp == poly[:, None]).all(-1))
+
+c_eq_p  # array([18, 26, 35, 40], dtype=int64)
+p_eq_c  # array([3, 5, 6, 8], dtype=int64)
+
+clp[p_eq_c]
+Geo([[ 15.00,  19.00],
+     [ 17.50,  17.50],
+     [ 19.00,  15.00],
+     [ 23.50,  13.00]])
+
+poly[c_eq_p]
+Geo([[ 15.00,  19.00],
+     [ 17.50,  17.50],
+     [ 19.00,  15.00],
+     [ 23.50,  13.00]])
 
 
-second
-<img src="edgy_clp_3.png" align="right" width="300"/>
+```
 
-1
-
-2
-
-3
-
-4
-
-5
-
-
+----
 third
 <img src="edgy_clp_4.png" align="right" width="300"/>
 
