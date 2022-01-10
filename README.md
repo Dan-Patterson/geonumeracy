@@ -16,6 +16,18 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   In, out, on, neither, both, left of, right of.
   Questions, questions.
+  
+* [Buffer mysteries](/docs/buffer/buffer_mysteries.md)
+
+  Everyone loves a buffer.  Are they arcs? circles? or n-gons? 
+
+* [Densify geometry](/docs/densify/Densify.md)
+
+  Add points between vertices of polygon or polyline geometry.
+
+* [Dissolve those boundaries](/docs/dissolve/Dissolve.md)
+
+  Removing boundaries between polygon geometries.
 
 * [Crossings](/docs/crossings.md)
 
@@ -33,16 +45,8 @@ Things numeric relating to geometry and computational geometry that I have disco
 
   We will see how you mastered intersections as the first step to clipping and erasing and the like.
 
-* [Buffer mysteries](/docs/buffer/buffer_mysteries.md)
+* [Clipping complex shapes](/docs/clipping/clip.md)
 
-  Everyone loves a buffer.  Are they arcs? circles? or n-gons? 
-
-* [Densify geometry](/docs/densify/Densify.md)
-
-  Add points between vertices of polygon or polyline geometry.
-
-* [Dissolve those boundaries](/docs/dissolve/Dissolve.md)
-
-  Removing boundaries between polygon geometries.
+  Just when you thought you were grasping intersections and simple clipping.
 
 (1)  Crossroad Blues : Robert Johnson, Eric Clapton or Ry Cooder versions are all just fine as study music.
