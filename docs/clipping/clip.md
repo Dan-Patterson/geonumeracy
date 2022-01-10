@@ -8,6 +8,15 @@ Let us take a tour around the two polygon shapes to the right. Clipping one shap
 
 The intersection points, for the most part, occur along the segments.  Several intersections occur at the polygon nodes which creates special challenges during clipping.
 
+In this document, polygons segments are denoted using their start point.  The two polygons can be either the clipping polygon or the polygons being clipped.  Consider the red polygon as the clipping polygon and the black polygon as the one being clipped:
+
+- segment 0  on the left side of the image, is formed by points 0-1.  It has no intersections with the other polygon.
+- segment 1  intersects segments 9 and 12, and the intersections are along the length of the segment
+- segment 2  It looks like it doesn't intersect anything, but, its endpoint does. This type of intersection is the most problematic because it intersects the ...
+  - endpoint of segment 17
+  - start point of segment 18 and
+  - it also represents the startpoint of its own segment 3
+- segment 3  its start point is the endpoint of segment 2, so it will share the same intersections as those found for segment 2
 <br />
 <br />
 <br />
