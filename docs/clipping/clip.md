@@ -37,7 +37,6 @@ Consider the red polygon as the clipping polygon and the black polygon as the on
 There are 4 intersections points that are similar to the one discussed above.  I can identify those using a function to yield various point equality values.  These are named in the code block below.
 
 ```
-
 # -- clp and poly are Nx2 arrays of point coordinates with
 #    shapes of (16, 2) and (73, 2) respectively.
 
@@ -112,13 +111,13 @@ array([[[ 17.50,  17.50],
         [ 23.50,  13.00]]])
 ```
 
-<br /><br /><br /><br />
-
 The intersecting segments point ids and whether they are inside each other are denoted in an array structure as follows:
 ```
 # -- before processing
 # -----------------
 xCheck 
+#       point ids     |  out/in => 0, 1 
+#       c0  c1  p0  p1  c0  c1  p0  p1
 array([[ 1,  1,  9, 12,  0,  0,  1,  0],
        [ 2,  2, 17, 18,  0,  0,  1,  1],
        [ 3,  3, 17, 18,  1,  1,  1,  1],  # omitted
@@ -143,18 +142,59 @@ array([[ 1,  1,  9, 12,  0,  0,  1,  0],
        [14, -1, 56, -1,  0,  0,  1,  0]], dtype=int64)
 
 ```
-When processed, only certain intersections are considered to form the final clipped polygons.
+When processed, only certain intersections are considered to form the final clipped polygons.  Consider the first intersection
 
+```
+        point ids     |  out/in => 0, 1 
+        c0  c1  p0  p1  c0  c1  p0  p1
+         1,  1,  9, 12,  0,  0,  1,  0
+```
+- Points c0, c1 belong to segment 1 and it intersects segments 9 and 12 (p0 and p1).
+- c0 and c1 are outside the polygon being clipped.
+- p0's start point is inside the clipping polygon while p1's start point is outside.
+
+Each pattern is unique for the polygons being used.  In general, the types of intersections and the point locations can be summarized by their combinations.
+One should note the polygons are considered *in* if they are on one of the other polygon's edges.  This is an extension or interpretation of *point in polygon* to deal with boundary intersections.
+The combinations are as follows:
+
+```
+types of crossings
+------------------
+c0  c1  p0  p1		
+1,  1,  1,  1    all clipper and polygon points are coincident with the others segments
+1,  1,  1,  0    both clipper segments are in/on
+1,  1,  0,  1
+1,  1,  0,  0
+
+1,  0,  1,  1    - c0, c1 are not equal
+1,  0,  1,  0
+1,  0,  0,  1
+1,  0,  0,  0
+0,  1,  1,  1      only one clipper segment is in/on
+0,  1,  1,  0
+0,  1,  0,  1
+0,  1,  0,  0    - end one clipper segment
+
+0,  0,  1,  1    no clipper segment is in/on
+0,  0,  1,  0
+0,  0,  0,  1
+0,  0,  0,  0   none of the segments are inside the others geometry, but they do intersect
+```
+You can do the same interpretation for the polygon as was done for the clipper.  The first row and the last row in the table are special cases where geometries intersect at segment nodes.
+
+When segment c0 and c1 are equal, this means a single segment intersects one or more of the other polygon's segments.  Only the upper and lower block are possible, that is, c0, c1 must be 0 or 1 with no combinations.
+
+When segment c0 and c1 are different, then you are dealing with 2 clipper segments and all combinations are possible.
+
+Head spinning?  
+
+Good
+
+We will get to the code in a bit.  Enjoy following the rest of the polygon intersections in the images below, they will be referred to later.
 
 ----
-
-<br /><br />
-
-----
-third
 <img src="edgy_clp_4.png" align="right" width="300"/>
 
-----
-fourth
+
 <img src="edgy_clp_5.png" align="right" width="300"/>
 
