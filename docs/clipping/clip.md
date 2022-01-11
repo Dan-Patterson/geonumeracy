@@ -4,7 +4,7 @@
 
 Let us take a tour around the two polygon shapes to the right.
 
-The top right hand corner of the image above is enlarged to the right.  Clipping one shape with the other will obviously leave parts inside and outside the other.
+The top right hand corner of the image to the right is enlarged below.  Clipping one shape with the other will obviously leave parts inside and outside the other.
 
 The intersection points, for the most part, occur along the segments.  Several intersections occur at the polygon nodes which creates special challenges during clipping.
 
@@ -34,7 +34,7 @@ Consider the red polygon as the clipping polygon and the black polygon as the on
   - it also represents the startpoint of its own segment 3
 - segment 3  its start point is the endpoint of segment 2, so it will share the same intersections as those found for segment 2
 
-There are 4 intersections points that are similar to the one discussed above.  I can identify those using a function
+There are 4 intersections points that are similar to the one discussed above.  I can identify those using a function to yield various point equality values.  These are named in the code block below.
 
 ```
 
@@ -113,6 +113,38 @@ array([[[ 17.50,  17.50],
 ```
 
 <br /><br /><br /><br />
+
+The intersecting segments point ids and whether they are inside each other are denoted in an array structure as follows:
+```
+# -- before processing
+# -----------------
+xCheck 
+array([[ 1,  1,  9, 12,  0,  0,  1,  0],
+       [ 2,  2, 17, 18,  0,  0,  1,  1],
+       [ 3,  3, 17, 18,  1,  1,  1,  1],  # omitted
+       [ 4,  4, 25, 26,  1,  1,  0,  1],
+       [ 5,  5, 25, 26,  1,  1,  0,  1],
+       [ 5,  5, 34, 35,  1,  1,  1,  1],  # omitted
+       [ 6,  6, 34, 35,  1,  1,  1,  1],  # omitted
+       [ 7,  7, 39, 40,  1,  1,  0,  1],
+       [ 8,  8, 39, 40,  1,  1,  0,  1],  # omitted
+       [11, 14, 51,  3,  1,  0,  0,  0],
+       [14, -1, 56, -1,  0,  0,  1,  0]], dtype=int64)
+	   
+# -- after processing
+# ----------------
+np.asarray([i[0] for i in tot_])
+array([[ 1,  1,  9, 12,  0,  0,  1,  0],
+       [ 2,  2, 17, 18,  0,  0,  1,  1],
+       [ 4,  4, 25, 26,  1,  1,  0,  1],
+       [ 5,  5, 34, 35,  1,  1,  1,  1],
+       [ 7,  7, 39, 40,  1,  1,  0,  1],
+       [11, 14, 51,  3,  1,  0,  0,  0],
+       [14, -1, 56, -1,  0,  0,  1,  0]], dtype=int64)
+
+```
+When processed, only certain intersections are considered to form the final clipped polygons.
+
 
 ----
 
