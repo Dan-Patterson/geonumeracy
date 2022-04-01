@@ -192,8 +192,13 @@ Good
 
 We will get to the code in a bit.  Enjoy following the rest of the polygon intersections in the images below, they will be referred to later.
 
+The code has been placed in ...
+
+https://github.com/Dan-Patterson/polygon_clipping
+
 ----
-<img src="edgy_clp_4.png" align="right" width="300"/>
+
+<img src="edgy_clp_4.png" align="left" width="300"/>
 
 
 <img src="edgy_clp_5.png" align="right" width="300"/>
