@@ -274,3 +274,9 @@ def hex_pointy(dx=1, dy=1,
         return arrays_to_Geo(hexs, kind=k, info=txt)
     return hexs
 ```
+
+<img src="../images/hex_flat.png" align="center" width="200"/>
+
+<img src="../images/hex_pointy.png" align="center" width="200"/>
+
+That is basic hexagons.
