@@ -277,6 +277,10 @@ def hex_pointy(dx=1, dy=1,
 
 <img src="../images/hex_flat.png" align="center" width="200"/>
 
+More geometry objects can be found in the npg_create.py script which is part of the numpy geometry module.
+
+[(1) Array Broadcasting](https://numpy.org/devdocs/user/basics.broadcasting.html)
+
 <img src="../images/hex_pointy.png" align="center" width="200"/>
 
 That is basic hexagons.
