@@ -285,6 +285,8 @@ More geometry objects can be found in the npg_create.py script which is part of 
 
 That is basic hexagons.
 
-more shapes can be created using
+More shapes can be created using *npg_create.py* in
 
-arcpro_npg/npg/npg/npg_create.py
+[(2) numpy geometry](https://github.com/Dan-Patterson/numpy_geometry/blob/master/arcpro_npg/npg/npg/npg_create.py)
+
+
