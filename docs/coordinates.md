@@ -191,3 +191,86 @@ def triangle(dx=1, dy=1, x_cols=1, y_rows=1, orig_x=0, orig_y=1):
 The result.
 
 <img src="../images/triangles.png" align="center" width="300"/>
+
+### Hexagons
+
+
+There are two variants of hexagons, which I can flat-headed and pointy-headed.  Those aren't the official names of course.
+
+The seed entails cycling around the angles of a circle in 60 degree increments with different starting points for the two variants
+and producing the boundaries based on increments of x and y to form the sides of the hexagons.  The two variants are shown below the code examples.  I haven't included the code for filling in the half hexagons should you want to fill those in.  It is sometimes quicker to form extra columns and rows then clip with the desired rectangular extent.
+
+```python
+def hex_flat(dx=1, dy=1,
+             x_cols=1, y_rows=1,
+             orig_x=0, orig_y=0,
+             upper_left=True,
+             asGeo=True, kind=2):
+    """Generate the points for the flat-headed hexagon.
+
+    Parameters
+    ----------
+    See `rectangles` for shared parameter explanation.
+
+    Notes
+    -----
+    The origin is center of the top-left full cell, not the upper left point 
+    """
+    f_rad = np.deg2rad([180., 120., 60., 0., -60., -120., -180.])
+    X = np.cos(f_rad) * dy
+    Y = np.sin(f_rad) * dy            # scaled hexagon about 0, 0
+    seed = np.array(list(zip(X, Y)))  # array of coordinates
+    _dx_ = dx * 1.5
+    _dy_ = dy * np.sqrt(3.) / 2.0
+    if upper_left:
+        y_fac = -_dy_
+    else:
+        y_fac = _dy_
+    hexs = [seed + [_dx_ * i, y_fac * (i % 2)] for i in range(0, x_cols)]
+    m = len(hexs)
+    for j in range(1, y_rows):  # create the other rows
+        hexs += [hexs[h] + [0, -_dy_ * 2 * j] for h in range(m)]
+    hexs = np.asarray(hexs) + [orig_x + dx, orig_y - dy]  # 2026-04-28
+    if asGeo:
+        frmt = "dx {}, dy {}, x_cols {}, y_rows {}, LB ({},{})"
+        txt = frmt.format(dx, dy, x_cols, y_rows, orig_x, orig_y)
+        k = kind if kind in [1, 2] else 2
+        return arrays_to_Geo(hexs, kind=k, info=txt)
+    return hexs
+```
+
+The pointy-head version
+
+```python
+def hex_pointy(dx=1, dy=1,
+               x_cols=1, y_rows=1,
+               orig_x=0, orig_y=0,
+               asGeo=True, kind=2):
+    """Create pointy hexagons. Also called ``traverse hexagons``.
+
+    Parameters
+    ----------
+    See `rectangles` for shared parameter explanation.
+
+    Notes
+    -----
+    The origin is center of the top-left full cell, not the upper left point
+    """
+    p_rad = np.deg2rad([150., 90., 30., -30., -90., -150., 150.])
+    X = np.cos(p_rad) * dx
+    Y = np.sin(p_rad) * dy      # scaled hexagon about 0, 0
+    seed = np.array(list(zip(X, Y)))
+    _dx_ = dx * np.sqrt(3.) / 2.0
+    _dy_ = dy * 1.5
+    hexs = [seed + [_dx_ * i * 2, 0] for i in range(0, x_cols)]
+    m = len(hexs)
+    for j in range(1, y_rows):  # create the other rows
+        hexs += [hexs[h] + [_dx_ * (j % 2), -_dy_ * j] for h in range(m)]
+    hexs = np.asarray(hexs) + [orig_x, orig_y]  # 2026-04-26 dropped -dy
+    if asGeo:
+        frmt = "dx {}, dy {}, x_cols {}, y_rows {}, LB ({},{})"
+        txt = frmt.format(dx, dy, x_cols, y_rows, orig_x, orig_y)
+        k = kind if kind in [1, 2] else 2
+        return arrays_to_Geo(hexs, kind=k, info=txt)
+    return hexs
+```
