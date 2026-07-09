@@ -284,3 +284,7 @@ More geometry objects can be found in the npg_create.py script which is part of 
 <img src="../images/hex_pointy.png" align="center" width="200"/>
 
 That is basic hexagons.
+
+more shapes can be created using
+
+arcpro_npg/npg/npg/npg_create.py
