@@ -167,4 +167,5 @@ def p_c_p(clipper, poly):
         return final, both, pc_ids  # poly_clipper_ids
     return None, both, None
 ```
-[(1) Array Broadcasting](https://numpy.org/devdocs/user/theory.broadcasting.html)
+
+[(1) Array Broadcasting](https://numpy.org/devdocs/user/basics.broadcasting.html)
