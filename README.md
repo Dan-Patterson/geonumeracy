@@ -6,6 +6,8 @@ Things numeric relating to geometry and computational geometry that I have disco
 
 * [In, On or Out.  Collinearity and other things](/docs/collinearity/in_out_on_pip_revisited.md).
 
+  This document covers some of the issues surrounding point in polygon determinations.
+
 * [Coordinates and shapes](/docs/coordinates.md)
 
   Planar/Euclidean space.  Basic coordinate notation. Creating basic geometric shapes and patterns.
