@@ -1,9 +1,10 @@
-point in polygon revisited.
---------------------------
+In, Out, On ... collinearity and other things
+---------------------------------------------
 
-The "norm" is points on the boundary of a polygon are considered "outside", but there are situations where you
-may want to include them.  Determining whether a point is on or extremely close to the boundary is 
-doeable but it requires checks.
+# point in polygon revisited
+
+For point in polygon, spatial joins and the like, the normally accepted definitions consider points on the boundary of a polygon are "outside".
+There are situations where you may want to include them. Determining whether a point is on or extremely close to the boundary is doeable but it requires checks.
 
 Let us start with a polygon, oriented clockwise beginning at position [1., 1.]
 
@@ -17,7 +18,7 @@ array([[   1.000,    1.000],
 
 The following figure shows an annotated list of points and there position relative to outside, on or inside the polygon boundary.
 
-<img src="../pip_revisited0.png" align="left" width="400"/>
+<img src="pip_revisited0.png" align="center" width="400"/>
 
 One of the problems is with points that are collinear to the segments/edges of the boundary.
 A collinear point can indicate that a point is equal to one of the vertices of the polygon
@@ -61,16 +62,19 @@ Just a check for collinearity isn't enough because a point can be external to th
 definitely outside the boundary and not on it.  This case is represented by points 4 and 6.  Point 21 however is
 on the boundary, but you could tell visually ehh? between 20, 21 and 22?
 
+<img src="pip_revisited1.png" align="center" width="400"/>
+
 A "distance" check can be added to the toolset.  This entails determining a candidate point's distance between two polygon
 vertices.  The point's distance to the "from" vertex plus the distance to the "to" vertex will equal
 the segment/edge length if the point is collinear and on the boundary.
 
 Too much effort? Not if you want to definitely include or exclude points that may be on the polygon boundary.
 
-Now some of the checks
-for points 0, 4, 5, 6, 7
+Now some of the checks for points 0, 4, 5, 6, 7
 
-segments are all the same length.  point 0 is on the start vertex of the polygon.  It ascends upwards and is oriented
+<img src="pip_revisited2.png" align="center" width="300"/>
+
+The segments are all the same length.  point 0 is on the start vertex of the polygon.  It ascends upwards and is oriented
 clockwise ending at the same point.
 
 seg_len = array([  64.000,   64.000,   64.000,   64.000])  # -- the edge lengths
