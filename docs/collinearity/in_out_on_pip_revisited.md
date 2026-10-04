@@ -1,7 +1,7 @@
 In, Out, On ... collinearity and other things
 ---------------------------------------------
 
-# point in polygon revisited
+Point in Polygon revisited.
 
 For point in polygon, spatial joins and the like, the normally accepted definitions consider points on the boundary of a polygon are "outside".
 There are situations where you may want to include them. Determining whether a point is on or extremely close to the boundary is doeable but it requires checks.
