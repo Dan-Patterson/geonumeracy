@@ -16,6 +16,9 @@ array([[   1.000,    1.000],
 ```
 
 The following figure shows an annotated list of points and there position relative to outside, on or inside the polygon boundary.
+
+<img src="../pip_revisited0.png" align="left" width="400"/>
+
 One of the problems is with points that are collinear to the segments/edges of the boundary.
 A collinear point can indicate that a point is equal to one of the vertices of the polygon
  (points 5, 9, 13, 17),
