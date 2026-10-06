@@ -16,7 +16,7 @@ array([[   1.000,    1.000],
        [   1.000,    1.000]])
 ```
 
-The following figure shows an annotated list of points and there position relative to outside, on or inside the polygon boundary.
+The following figure shows an annotated list of points and their position relative to outside, on or inside the polygon boundary.
 
 <img src="pip_revisited0.png" align="center" width="400"/>
 
@@ -60,7 +60,7 @@ array([[   1.001,    4.000],
 
 Just a check for collinearity isn't enough because a point can be external to the polygon boundary but it is 
 definitely outside the boundary and not on it.  This case is represented by points 4 and 6.  Point 21 however is
-on the boundary, but you could tell visually ehh? between 20, 21 and 22?
+on the boundary, but you could tell visually ehh? (compare 20, 21 and 22)
 
 <img src="pip_revisited1.png" align="center" width="400"/>
 
@@ -74,7 +74,7 @@ Now some of the checks for points 0, 4, 5, 6, 7
 
 <img src="pip_revisited2.png" align="center" width="300"/>
 
-The segments are all the same length.  point 0 is on the start vertex of the polygon.  It ascends upwards and is oriented
+The segments are all the same length.  Point 0 is on the start vertex of the polygon.  It ascends upwards and is oriented
 clockwise ending at the same point.
 
 seg_len = array([  64.000,   64.000,   64.000,   64.000])  # -- the edge lengths
@@ -82,7 +82,7 @@ seg_len = array([  64.000,   64.000,   64.000,   64.000])  # -- the edge lengths
 Now if we focus on the aforementioned points we can use the following definitions:
 
   - A point is collinear to an edge if the absolute value of the crossproduct is equal to zero
-   (or some small value accounting for floating point issues.
+   (or some small value accounting for floating point issues).
 
     is_collinear = np.abs(diff_) < 1e-10
 
@@ -100,6 +100,8 @@ on_edge = np.any(is_collinear & is_within_segment, axis=1)
 For the points in question, the collinearity check yields:
 
 diff_[[0, 4, 5, 6, 7]]
+
+The output is annotated, edges are the columns. Points are the rows.
 
 ```python
   edges  0         1         2         3          points
@@ -135,7 +137,7 @@ array([[  -8.000,   -8.000,   72.000,   72.000],   0
        [   4.000,    4.000,   60.000,   60.000]])  7
 ```
 
-Which are within the segments using the following:
+You determine which ones are within the segments using the following:
 
 is_within_segment = (dot_ >= 0) & (dot_ <= seg_len)
 
